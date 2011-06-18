@@ -15,7 +15,11 @@ function tranform_to_table(){
     var td1 = $("<td/>");
     var td2 = $("<td/>");
   
-    // <a href="Data-Text-Lazy.html#v:map">map</a>
+    // subsの中にあるテーブルは単なるテキストに変換する
+    var table_in_cell = $("table",subs).html();
+    $("table",subs).remove();
+    subs.append($("<div/>").html(table_in_cell));
+
     $('a:contains("' + function_name + '")',doc).replaceWith($('<a/>').html("φ"));
     
     $("pre",doc).html(($("pre",doc).html() || '').replace(new RegExp(function_name,'g'),'φ'));
@@ -35,9 +39,13 @@ function tranform_to_table(){
   
   // コピペ時にフッターが邪魔なので削除する
   $('div#footer').remove();
-  
-  // 本文を削除する
+  $('#package-header').remove();
   $('#interface').remove();
+  $('table.info').remove();
+  
+  // 右側の目次部分,synopsis部分も削除する
+  $('#table-of-contents').remove();
+  $('#synopsis').remove();
 }
 
 tranform_to_table();
