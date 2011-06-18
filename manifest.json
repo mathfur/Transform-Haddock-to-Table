@@ -1,7 +1,7 @@
 {
-	"name" : "Hello World",
+	"name" : "Transform Haddock to Table",
 	"version" : "1.0",
-	"description" : "description of Hello World",
+	"description" : "This tool transform haskell reference page to table form.",
 	"background_page" : "background.html",
 	"permissions" : [],
 	"browser_action" : {},
@@ -13,7 +13,7 @@
 				"user_script.js"
 			],
 			"matches": [
-				"http://hackage.haskell.org/packages/archive/**/doc/html/Data-Text-Lazy.html"
+				"http://hackage.haskell.org/packages/archive/**/*.html"
 			]
 		}
 	]
