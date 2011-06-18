@@ -3,20 +3,29 @@
 alert("__START__");
 var table = $("<table/>");
 table.attr("border","2");
-$("div.top > div.doc").each(function(i,doc){
+$("div.top").each(function(i,top_){
   // 挿入するテーブルのセル内データ
-  var description = $(doc).find("p").html();  // 各関数の解説部分
-  var src = $(doc).find("pre").html();        // 各関数のサンプルソース
+  var doc = $("div.doc",top_);
+  var subs = $("div.subs",top_);
+  var src = $("p.src",top_);
+  var function_name = $("a.def",src).html(); //=> e.g. "cons"
+  var description = $(doc).html();  // 各関数の解説部分
+  var type_info = $(doc);
 
   // 挿入するセル
   var tr = $("<tr/>");
   var td1 = $("<td/>");
   var td2 = $("<td/>");
 
-  td1.html( $("<p/>").html(description) );
+  // <a href="Data-Text-Lazy.html#v:map">map</a>
+  $('a:contains("' + function_name + '")',doc).replaceWith($('<a/>').html("###"))
+  
+  var lhs = $("<p/>").html(doc.html()).append($("<p/>").html(subs.html()));
+  td1.html( lhs );
   td1.appendTo(tr);
 
-  td2.html( $("<pre/>").html(src) );
+  var rhs = $("<pre/>").html(src.html());
+  td2.html( rhs );
   td2.appendTo(tr);
 
   tr.appendTo(table);
