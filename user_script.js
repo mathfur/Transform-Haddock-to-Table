@@ -34,10 +34,10 @@ function tranform_to_table(){
   table.appendTo($("body"));
   
   // コピペ時にフッターが邪魔なので削除する
-  $('div#footer').empty();
+  $('div#footer').remove();
   
   // 本文を削除する
-  $('#interface').empty();
+  $('#interface').remove();
 }
 
 tranform_to_table();
