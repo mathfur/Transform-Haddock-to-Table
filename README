@@ -1,0 +1,8 @@
+This tool transform haskell reference page to table form.
+This tool use to learn haskell library.
+
+First column have function description,
+and second column have function name and type.
+
+At first, you see First column.
+If you don't know the function, then you see the second column.
