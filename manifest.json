@@ -2,10 +2,8 @@
 	"name" : "Transform Haddock to Table",
 	"version" : "1.0",
 	"description" : "This tool transform haskell reference page to table form.",
-	"background_page" : "background.html",
 	"permissions" : [],
 	"browser_action" : {},
-	"options_page" : "options.html",
 	"content_scripts": [
 		{
 			"js": [
