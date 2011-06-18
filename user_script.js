@@ -18,8 +18,9 @@ $("div.top").each(function(i,top_){
   var td2 = $("<td/>");
 
   // <a href="Data-Text-Lazy.html#v:map">map</a>
-  $('a:contains("' + function_name + '")',doc).replaceWith($('<a/>').html("###"))
+  $('a:contains("' + function_name + '")',doc).replaceWith($('<a/>').html("φ"));
   
+  $("pre",doc).html(($("pre",doc).html() || '').replace(new RegExp(function_name,'g'),'φ'));
   var lhs = $("<p/>").html(doc.html()).append($("<p/>").html(subs.html()));
   td1.html( lhs );
   td1.appendTo(tr);
@@ -33,4 +34,10 @@ $("div.top").each(function(i,top_){
 
 // テーブルとして末尾に追加する
 table.appendTo($("body"));
+
+// コピペ時にフッターが邪魔なので削除する
+$('div#footer').empty();
+
+// 本文を削除する
+
 alert("__END__");
