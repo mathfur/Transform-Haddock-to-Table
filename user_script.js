@@ -3,9 +3,9 @@ function tranform_to_table(){
   table.attr("border","2");
   $("div.top").each(function(i,top_){
     // 挿入するテーブルのセル内データ
-    var doc = $("div.doc",top_);
-    var subs = $("div.subs",top_);
-    var src = $("p.src",top_);
+    var doc = $("div.doc",top_); // function description part.
+    var subs = $("div.subs",top_); 
+    var src = $("p.src",top_);  // example) plus :: Int -> Int
     var function_name = $("a.def",src).html(); //=> e.g. "cons"
     var description = $(doc).html();  // 各関数の解説部分
     var type_info = $(doc);
@@ -23,9 +23,13 @@ function tranform_to_table(){
     $('a:contains("' + function_name + '")',doc).replaceWith($('<a/>').html("φ"));
     
     $("pre",doc).html(($("pre",doc).html() || '').replace(new RegExp(function_name,'g'),'φ'));
+
     var lhs = $("<p/>").html(doc.html()).append($("<p/>").html(subs.html()));
     td1.html( lhs );
     td1.appendTo(tr);
+
+    // delete "Source" link at "plus :: Int -> Int    |Source"
+    $("a.link",src).remove();
   
     var rhs = $("<pre/>").html(src.html());
     td2.html( rhs );
